@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>激活邮件</title>
+</head>
+<body>
+您好,这是验证邮件,请点击下面的链接完成验证,<br/>
+<a href="#" th:href="@{ http://www.saya.ac.cn/user/{id}(id=${id}) }">激活账号</a>
+</body>
+</html>
