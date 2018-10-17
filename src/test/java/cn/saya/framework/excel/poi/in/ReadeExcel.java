@@ -5,7 +5,7 @@ import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.util.NumberToTextConverter;
 import org.junit.Test;
-
+import org.apache.log4j.Logger;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -13,12 +13,15 @@ import java.util.Date;
 
 public class ReadeExcel {
 
+    private static final Logger LOGGER = Logger.getLogger(ReadeExcel.class);
+
     @Test
     /**
      * 解析文件
      */
     public void reade() throws Exception
     {
+        LOGGER.error("程序执行错误");
         //解析文件
         File file = new File(System.getProperty("user.dir") + "\\log\\create.xls");
         //读取Excel工作簿

@@ -36,7 +36,7 @@ public class MailTest {
                 "    <h3>hello world ! 这是一封Html邮件!</h3>\n" +
                 "</body>\n" +
                 "</html>";
-        MailService.sendHtmlMail("pandoras@189.cn","测试邮箱",content);
+        //MailService.sendHtmlMail("pandoras@189.cn","测试邮箱",content);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class MailTest {
         Context context = new Context();
         context.setVariable("id", "101");
         String emailContent = templateEngine.process("mail/layout1", context);
-        MailService.sendHtmlMail("pandoras@189.cn","激活测试",emailContent);
+        //MailService.sendHtmlMail("pandoras@189.cn","激活测试",emailContent);
     }
 
 }

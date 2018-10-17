@@ -53,4 +53,5 @@ mybatis:
   type-aliases-package: cn.saya.framework.api.entity
 
 logging:
-  config: classpath:log4j2.xml
+  config: classpath:log4j.properties
+  #config: classpath:log4j2.xml

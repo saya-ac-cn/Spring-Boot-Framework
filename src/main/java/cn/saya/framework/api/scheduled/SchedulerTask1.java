@@ -1,5 +1,6 @@
 package cn.saya.framework.api.scheduled;
 
+import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -15,11 +16,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class SchedulerTask1 {
 
+    private static final Logger logger = Logger.getLogger(SchedulerTask1.class);
+
     private int count=0;
 
     @Scheduled(cron="*/6 * * * * ?")
     private void process(){
-        System.out.println("this is scheduler task runing  "+(count++));
+        logger.error("this is scheduler task runing  "+(count++));
     }
 
 }
