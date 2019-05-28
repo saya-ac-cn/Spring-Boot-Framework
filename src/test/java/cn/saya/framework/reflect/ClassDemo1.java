@@ -50,16 +50,26 @@ public class ClassDemo1 {
         //第三种表达方式
         Class c3 = null;
         try {
-            c3 = Class.forName("reflect.Pandora");
+            c3 = Class.forName("cn.saya.framework.reflect.Pandora");
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         System.out.println(c2==c3);
 
+        // 第四种
+        Class c4 = null;
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        try {
+            c4 = classLoader.loadClass("cn.saya.framework.reflect.Pandora");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println(c4==c3);
+
         //我们完全可以通过类的类类型创建该类的对象实例---->通过c1 or c2 or c3创建Pandora的实例对象
         try {
-            Pandora foo = (Pandora)c1.newInstance();//需要有无参数的构造方法
+            Pandora foo = (Pandora)c1.newInstance();//需要有无参数的构造方法，否则异常
             foo.print();
         } catch (InstantiationException e) {
             // TODO Auto-generated catch block

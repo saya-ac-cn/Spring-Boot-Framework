@@ -1,6 +1,7 @@
 package cn.saya.framework;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -9,12 +10,14 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling //定时任务
 public class FrameworkApplication {
 
-	private static final Logger logger = Logger.getLogger(FrameworkApplication.class);
+	private static Logger logger = LoggerFactory.getLogger(FrameworkApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication springApplication = new SpringApplication(FrameworkApplication.class);
-		springApplication.setAddCommandLineProperties(false);// 禁止命令行设置参数
+		// 禁止命令行设置参数
+		springApplication.setAddCommandLineProperties(false);
 		springApplication.run(args);
-		logger.warn("项目已经启动 ... ");//项目启动完成打印项目名
+		// //项目启动完成打印项目名
+		logger.warn("项目已经启动 ... ");
 	}
 }
