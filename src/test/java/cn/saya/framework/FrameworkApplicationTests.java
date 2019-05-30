@@ -1,6 +1,9 @@
 package cn.saya.framework;
 
 
+import cn.saya.framework.api.entity.PandaEntity;
+import cn.saya.framework.api.entity.UserEntity;
+import com.alibaba.fastjson.JSON;
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
@@ -9,8 +12,6 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -30,14 +31,20 @@ public class FrameworkApplicationTests {
 	@Autowired
 	private DefaultMQProducer defaultMQProducer;
 
-	@Test
-	public void send() throws MQClientException, MQBrokerException, RemotingException, InterruptedException{
-		String msg = "demo msg test";
-		System.out.println("开始发送消息："+msg);
-		Message sendMsg = new Message("demo-topic","demo-tag",msg.getBytes());
-		//默认3秒超时
-		SendResult sendResult = defaultMQProducer.send(sendMsg);
-		System.out.println("消息发送响应信息："+sendResult.toString());
+
+	public void sendMessage() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
+		UserEntity user  = new UserEntity("茜茜",18,"女");
+		Message message = new Message("demo-topic", "demo-tag", JSON.toJSONString(user).getBytes());
+		SendResult result = defaultMQProducer.send(message);
+		System.out.println("发送了消息" + result);
+
+		PandaEntity panda = new PandaEntity("虎子", 5);
+		Message pandaMessage = new Message("animal", "panda", JSON.toJSONString(panda).getBytes());
+		SendResult animalResult =  defaultMQProducer.send(pandaMessage);
+		System.out.println("发送了消息" +animalResult );
+
+		defaultMQProducer.shutdown();
+		System.out.println("producer shutdown!");
 	}
 
 }
