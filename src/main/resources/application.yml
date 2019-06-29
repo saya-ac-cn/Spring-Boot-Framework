@@ -60,7 +60,7 @@ spring:
     password: abfekqvcpsbrbhie
     default-encoding: UTF-8
 
-mybatis:
+mybatis-plus:
   mapper-locations: classpath:mybatis/mapper/*.xml
   type-aliases-package: cn.saya.framework.api.entity
   config-location: classpath:mybatis/config/mybatis-config.xml
