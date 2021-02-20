@@ -2,6 +2,7 @@ package ac.cn.saya.data;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
  * @Title: Bootstart
@@ -11,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date: 2020-10-14 22:38
  * @Description:
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class Bootstart {
 
     public static void main(String[] args) {

@@ -1,13 +1,12 @@
 package ac.cn.saya.data;
 
-import ac.cn.saya.data.dao.ClassesDAO;
-import ac.cn.saya.data.entity.ClassesEntity;
-import ac.cn.saya.data.entity.MajorEntity;
+import ac.cn.saya.data.service.TransactionService;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.junit.Test;
+
 /**
  * @Title: AppliactionTests
  * @ProjectName Spring-Boot-Framework
@@ -21,7 +20,7 @@ import org.junit.Test;
 public class AppliactionTests {
 
     @Autowired
-    private ClassesDAO classesDAO;
+    private TransactionService transactionService;
 
     @Test
     public void contextLoads() {
@@ -29,9 +28,8 @@ public class AppliactionTests {
     }
 
     @Test
-    public void save(){
-        //classesDAO.save("2014级1班",1);
-        System.out.println(classesDAO.findById(1));
+    public void save() {
+        transactionService.tx();
     }
 
 }
